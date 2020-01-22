@@ -1,4 +1,4 @@
-ALTER TABLE notes
+ALTER TABLE IF EXISTS notes
   DROP COLUMN folderId;
 
 DROP TABLE IF EXISTS folders;
