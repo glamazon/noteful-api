@@ -22,8 +22,9 @@ NotesRouter.route("/")
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { note_name, folderid, content } = req.body;
-    const newNote = { note_name, folderid, content };
+    const { note_name, folderId, content } = req.body;
+    const newNote = { note_name, folderId, content,
+    date_modified: new Date() };
     for (const [key, value] of Object.entries(newNote)) {
       if (value == null) {
         return res.status(400).json({
@@ -35,8 +36,8 @@ NotesRouter.route("/")
       .then(note => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `${newNote.id}`))
-          .json(newNote);
+          .location(path.posix.join(req.originalUrl, `${note.id}`))
+          .json(note);
       })
       .catch(next);
   });
