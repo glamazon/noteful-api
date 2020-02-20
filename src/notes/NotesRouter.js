@@ -7,7 +7,10 @@ const NotesRouter = express.Router();
 
 const serializeNote = note => ({
   note_name: xss(note.note_name),
-  content: xss(note.content)
+  content: xss(note.content),
+  id: note.id,
+  date_modified: note.date_modified,
+  folderId: note.folderId,
 });
 NotesRouter.route("/")
   .get((req, res, next) => {

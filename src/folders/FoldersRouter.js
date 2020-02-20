@@ -5,7 +5,9 @@ const FoldersService = require("./FoldersService")
 const FoldersRouter = express.Router();
 const jsonParser = express.json();
 const serializeFolder = folder => ({
-  folder_name: xss(folder.folder_name)
+  folder_name: xss(folder.folder_name),
+  id: folder.id
+
 });
 FoldersRouter
   .route("/")
